@@ -69,7 +69,7 @@ const Upload = () => {
               </div>
               <div className="form-div">
                 <label htmlFor="uploader">Upload Resume</label>
-                <FileUpload />
+                <FileUpload onFileSelect={handleFileSelect}/>
               </div>
               <button type="submit" className="primary-button">
                 Analyze Resume
