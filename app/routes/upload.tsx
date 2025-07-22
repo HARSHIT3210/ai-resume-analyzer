@@ -4,7 +4,7 @@ import { usePuterStore } from "~/lib/puter";
 import { useNavigate } from "react-router";
 import { generateUUID } from "~/lib/utils";
 import FileUpload from "~/components/FileUpload";
-import { prepareInstructions } from "~/constants";
+import { prepareInstructions, AIResponseFormat } from "~/constants";
 import { convertPdfToImage } from "~/lib/pdfToImage";
 
 const Upload = () => {
@@ -64,7 +64,7 @@ const Upload = () => {
       prepareInstructions({
         jobTitle,
         jobDescription,
-        AIResponseFormat: "json",
+        AIResponseFormat: AIResponseFormat,
       })
     );
     if (!feedback) return setStatusText("Error: Failed to analyze resume");
