@@ -43,7 +43,7 @@ export default function Home() {
     <main>
       <Navbar />
       <div className="w-full grid grid-rows-1 grid-cols-2">
-        <div className="border border-black flex flex-col items-start mt-24 justify-center gap-2 p-8">
+        <div className="flex flex-col items-start mt-24 justify-center gap-2 p-14">
           <div className="ml-4">
             <h1>Not Sure If Your Resume Stands Out?</h1>
             <h2 className="mt-2">
@@ -51,13 +51,15 @@ export default function Home() {
               your dream job.
             </h2>
           </div>
-          <div className="flex justify-center items-center">
-            <Button className="bg-[#eecb08] text-gray-800 ">
+          <div className="mt-2 ml-3">
+            <Link to={"/upload"}>
+            <Button className="bg-[#ffd900] rounded-2xl text-gray-800 hover:bg-yellow-400 border-amber-400">
               Upload Resume
             </Button>
+            </Link>
           </div>
         </div>
-        <div className="border border-black"></div>
+        <div></div>
       </div>
     </main>
   );

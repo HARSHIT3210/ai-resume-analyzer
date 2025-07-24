@@ -4,8 +4,13 @@ import { usePuterStore } from "~/lib/puter";
 import { useNavigate } from "react-router";
 import { generateUUID } from "~/lib/utils";
 import FileUpload from "~/components/FileUpload";
-import { prepareInstructions, AIResponseFormat } from "~/constants";
+import {
+  prepareInstructions,
+  AIResponseFormat,
+  uploadInstructions,
+} from "~/constants";
 import { convertPdfToImage } from "~/lib/pdfToImage";
+import { Button } from "~/components/ui/button";
 
 const Upload = () => {
   const { auth, isLoading, fs, ai, kv } = usePuterStore();
@@ -99,64 +104,107 @@ const Upload = () => {
   return (
     <main>
       <Navbar />
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 min-h-[calc(100vh-80px)]">
+        <header className="flex flex-col gap-3 p-12 text-white overflow-y-auto">
+          <h1 className="text-4xl font-bold">
+            Smart Feedback for Your Dream Job
+          </h1>
+          <h2 className="text-lg text-yellow-300">
+            Drop your resume to get AI-powered insights, ATS score & improvement
+            tips.
+          </h2>
 
-      <section className="main-section">
-        <div className="page-heading py-16">
-          <h1>Smart feedback for your dream job</h1>
+          <ul className="flex flex-col gap-3 mt-6 text-lg text-gray-200 list-disc pl-6">
+            <li>✅ Get personalized feedback</li>
+            <li>🧠 Trained on job-specific patterns</li>
+            <li>📈 Boost your interview chances</li>
+          </ul>
+
+          <div className="mt-5 space-y-6">
+            <h1>How It Works</h1>
+            {uploadInstructions.map((step, i) => (
+              <div key={i} className="text-lg">
+                <h3 className="font-semibold text-white">{step.title}</h3>
+                <p className="text-gray-200 text-sm">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </header>
+
+        {/* RIGHT SIDE – Upload Form */}
+        <section className="p-12 flex flex-col justify-center h-full overflow-y-auto">
           {isProcessing ? (
             <>
-              <h2>{statusText}</h2>
-              <img src="/images/resume-scan.gif" className="w-full" />
+              <p>{statusText}</p>
+              <img
+                src="/images/resume-scan.gif"
+                className="w-full max-w-md mt-4 rounded-lg"
+                alt="Analyzing Resume"
+              />
             </>
           ) : (
-            <h2>Drop your resume for an ATS score and improvement tips</h2>
-          )}
-          {!isProcessing && (
             <form
               id="upload-form"
               onSubmit={handleSubmit}
-              className="flex flex-col gap-4 mt-8"
+              className="flex flex-col gap-2"
             >
               <div className="form-div">
-                <label htmlFor="company-name">Company Name</label>
-                <input
-                  type="text"
-                  name="company-name"
-                  placeholder="Company Name"
-                  id="company-name"
-                />
+                <div>
+                  <label htmlFor="company-name" className="font-semibold">
+                    Company Name
+                  </label>
+                  <input
+                    type="text"
+                    name="company-name"
+                    placeholder="e.g. Google"
+                    id="company-name"
+                    className="border p-2 rounded-md w-full"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="job-title" className="font-semibold">
+                    Job Title
+                  </label>
+                  <input
+                    type="text"
+                    name="job-title"
+                    placeholder="e.g. Frontend Developer"
+                    id="job-title"
+                    className="border p-2 rounded-md w-full"
+                  />
+                </div>
               </div>
-              <div className="form-div">
-                <label htmlFor="job-title">Job Title</label>
-                <input
-                  type="text"
-                  name="job-title"
-                  placeholder="Job Title"
-                  id="job-title"
-                />
-              </div>
-              <div className="form-div">
-                <label htmlFor="job-description">Job Description</label>
+
+              <div className="w-full">
+                <label htmlFor="job-description" className="font-semibold">
+                  Job Description
+                </label>
                 <textarea
                   rows={5}
                   name="job-description"
-                  placeholder="Job Description"
+                  placeholder="Paste the job description here"
                   id="job-description"
+                  className="border p-2 rounded-md w-full"
                 />
               </div>
 
-              <div className="form-div">
-                <label htmlFor="uploader">Upload Resume</label>
+              <div className="w-full ">
+                <label htmlFor="uploader" className="font-semibold">
+                  Upload Resume (PDF only)
+                </label>
                 <FileUpload onFileSelect={handleFileSelect} />
               </div>
 
-              <button className="primary-button" type="submit">
+              <Button
+                className="bg-[#ffd900] rounded-xl text-gray-800 hover:bg-yellow-400 transition"
+                type="submit"
+              >
                 Analyze Resume
-              </button>
+              </Button>
             </form>
           )}
-        </div>
-      </section>
+        </section>
+      </div>
     </main>
   );
 };

@@ -13,7 +13,7 @@ const Navbar = () => {
         <Link to={"/wipe"}>
           <Button
             size={"sm"}
-            className="bg-[#ffd900] text-gray-800 text-xs hover:bg-yellow-400 cursor-pointer border-amber-400"
+            className="bg-[#ffd900] text-gray-800 text-xs hover:bg-yellow-400 border-amber-400"
           >
             My Resumes
           </Button>
@@ -21,7 +21,7 @@ const Navbar = () => {
         <Link to={"/wipe"}>
           <Button
             size={"sm"}
-            className="bg-[#ffd900] text-gray-800 text-xs hover:bg-yellow-400  cursor-pointer border-amber-400"
+            className="bg-[#ffd900] text-gray-800 text-xs hover:bg-yellow-400  border-amber-400"
           >
             Wipe Data
           </Button>
@@ -29,7 +29,7 @@ const Navbar = () => {
         <Link to={"/upload"}>
           <Button
             size={"sm"}
-            className="bg-[#ffd900] text-gray-800 text-xs hover:bg-yellow-400  cursor-pointer border-amber-400"
+            className="bg-[#ffd900] text-gray-800 text-xs hover:bg-yellow-400  border-amber-400"
           >
             Upload Resume
           </Button>

@@ -29,7 +29,7 @@ const FileUpload = ({ onFileSelect }: FileUploaderProps) => {
   const file = acceptedFiles[0] || null;
 
   return (
-    <div className="w-full gradient-border">
+    <div className="w-full gradient-border bg-gray-200">
       <div {...getRootProps()}>
         <input {...getInputProps()} />
 
@@ -60,15 +60,15 @@ const FileUpload = ({ onFileSelect }: FileUploaderProps) => {
               </button>
             </div>
           ) : (
-            <div>
+            <div className="p-4">
               <div className="mx-auto w-16 h-16 flex items-center justify-center mb-2">
                 <img src="/icons/info.svg" alt="upload" className="size-20" />
               </div>
-              <p className="text-lg text-gray-500">
+              <p className="text-lg text-gray-800 mt-4">
                 <span className="font-semibold">Click to upload</span> or drag
                 and drop
               </p>
-              <p className="text-lg text-gray-500">
+              <p className="text-lg text-gray-800">
                 PDF (max {formatSize(maxFileSize)})
               </p>
             </div>

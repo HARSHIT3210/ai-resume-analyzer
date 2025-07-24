@@ -157,7 +157,41 @@ export const prepareInstructions = ({
   Return the analysis as a JSON object, without any other text and without the backticks.
   Do not include any other text or comments.`;
 
-  {/* <section className="main-section">
+// constants/index.ts
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+
+export const socialImgs = [
+  {
+    icon: FaGithub,
+    link: "https://github.com/yourusername",
+  },
+  {
+    icon: FaLinkedin,
+    link: "https://linkedin.com/in/yourusername",
+  },
+  {
+    icon: FaTwitter,
+    link: "https://twitter.com/yourusername",
+  },
+];
+
+export const uploadInstructions = [
+  {
+    title: "1. Upload Resume",
+    desc: "Drop your resume in PDF format. We support most standard templates.",
+  },
+  {
+    title: "2. Add Job Info",
+    desc: "Paste in the job title and description so we can tailor the analysis.",
+  },
+  {
+    title: "3. Get AI Feedback",
+    desc: "Receive instant tips, score, and improvement areas — all powered by AI.",
+  },
+];
+
+{
+  /* <section className="main-section">
         <div className="page-heading py-6">
           <h1 className="font-bold">
             Track Your Applications & Resume Ratings
@@ -198,4 +232,5 @@ export const prepareInstructions = ({
             </Link>
           </div>
         )}
-      </section> */}
+      </section> */
+}
