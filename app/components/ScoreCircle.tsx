@@ -14,7 +14,7 @@ const ScoreCircle = ({ score = 75 }: { score: number }) => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="relative w-40 h-20">
+      <div className="relative w-25 h-15">
         <svg viewBox="0 0 100 50" className="w-full h-full">
           <defs>
             <linearGradient
@@ -52,7 +52,7 @@ const ScoreCircle = ({ score = 75 }: { score: number }) => {
         </svg>
 
         <div className="absolute inset-0 flex flex-col items-center justify-center pt-2">
-          <div className="text-xl font-semibold pt-4">{score}/100</div>
+          <div className="text-sm font-semibold pt-4">{score}/100</div>
         </div>
       </div>
     </div>

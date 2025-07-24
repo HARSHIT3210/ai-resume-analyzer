@@ -7,7 +7,7 @@ import Details from "~/components/Details";
 import Navbar from "~/components/Navbar";
 
 export const meta = () => [
-  { title: "Resumind | Review " },
+  { title: "Resumind | Review" },
   { name: "description", content: "Detailed overview of your resume" },
 ];
 
@@ -27,7 +27,6 @@ const Resume = () => {
   useEffect(() => {
     const loadResume = async () => {
       const resume = await kv.get(`resume:${id}`);
-
       if (!resume) return;
 
       const data = JSON.parse(resume);
@@ -36,58 +35,71 @@ const Resume = () => {
       if (!resumeBlob) return;
 
       const pdfBlob = new Blob([resumeBlob], { type: "application/pdf" });
-      const resumeUrl = URL.createObjectURL(pdfBlob);
-      setResumeUrl(resumeUrl);
+      setResumeUrl(URL.createObjectURL(pdfBlob));
 
       const imageBlob = await fs.read(data.imagePath);
       if (!imageBlob) return;
-      const imageUrl = URL.createObjectURL(imageBlob);
-      setImageUrl(imageUrl);
 
+      setImageUrl(URL.createObjectURL(imageBlob));
       setFeedback(data.feedback);
-      console.log({ resumeUrl, imageUrl, feedback: data.feedback });
     };
 
     loadResume();
   }, [id]);
 
   return (
-    <main className="!pt-0">
-      <nav className="resume-nav">
-
+    <main className="min-h-screen ">
       <Navbar />
-      </nav>
-      <div className="flex flex-row w-full max-lg:flex-col-reverse">
-        <section className="feedback-section bg-[url('/images/bg-small.svg') bg-cover h-[100vh] sticky top-0 items-center justify-center">
-          {imageUrl && resumeUrl && (
-            <div className="animate-in fade-in duration-1000 gradient-border max-sm:m-0 h-[90%] max-wxl:h-fit w-fit">
-              <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
-                <img
-                  src={imageUrl}
-                  className="w-full h-full object-contain rounded-2xl"
-                  title="resume"
-                />
-              </a>
-            </div>
-          )}
-        </section>
-        <section className="feedback-section">
-          <h2 className="text-4xl !text-black font-bold">Resume Review</h2>
+
+      <div className="flex w-full max-lg:flex-col-reverse">
+        {/* Left Section - Feedback */}
+        <section className="flex-1 px-8 py-6 space-y-8 animate-in fade-in duration-1000">
+          <p className="text-gray-200 font-semibold text-2xl">
+            Resume Review
+          </p>
+
           {feedback ? (
-            <div className="flex flex-col gap-8 animate-in fade-in duration-1000">
+            <>
               <Summary feedback={feedback} />
               <ATS
                 score={feedback.ATS.score || 0}
                 suggestions={feedback.ATS.tips || []}
               />
               <Details feedback={feedback} />
-            </div>
+            </>
           ) : (
-            <img src="/images/resume-scan-2.gif" className="w-full" />
+            <div className="flex justify-center items-center py-10">
+              <img
+                src="/images/resume-scan-2.gif"
+                alt="Loading..."
+                className="w-[200px] opacity-80"
+              />
+            </div>
           )}
         </section>
+
+        {/* Right Section - Resume Image */}
+        <aside className="w-full max-w-[600px] sticky top-0 rounded-2xl h-screen bg-[#bc4141] flex items-center justify-center px-4 py-6 border-l max-lg:border-t max-lg:h-[400px] max-lg:relative max-lg:top-auto">
+          {imageUrl && resumeUrl ? (
+            <a
+              href={resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full max-w-[90%] max-h-[90%] overflow-hidden rounded-2xl border shadow-md hover:shadow-lg transition"
+            >
+              <img
+                src={imageUrl}
+                alt="Resume"
+                className="w-full h-full object-contain rounded-2xl"
+              />
+            </a>
+          ) : (
+            <div className="text-gray-400 text-sm">Loading preview...</div>
+          )}
+        </aside>
       </div>
     </main>
   );
 };
+
 export default Resume;

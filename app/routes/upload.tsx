@@ -114,12 +114,6 @@ const Upload = () => {
             tips.
           </h2>
 
-          <ul className="flex flex-col gap-3 mt-6 text-lg text-gray-200 list-disc pl-6">
-            <li>✅ Get personalized feedback</li>
-            <li>🧠 Trained on job-specific patterns</li>
-            <li>📈 Boost your interview chances</li>
-          </ul>
-
           <div className="mt-5 space-y-6">
             <h1>How It Works</h1>
             {uploadInstructions.map((step, i) => (

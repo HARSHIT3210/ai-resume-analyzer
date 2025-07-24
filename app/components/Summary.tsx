@@ -31,7 +31,7 @@ const Summary = ({ feedback }: { feedback: Feedback }) => {
         <ScoreGauge score={feedback.overallScore} />
 
         <div className="flex flex-col gap-2">
-          <h2 className="text-2xl font-bold">Your Resume Score</h2>
+          <p className="text-2xl text-gray-800 font-bold">Your Resume Score</p>
           <p className="text-sm text-gray-500">
             This score is calculated based on the variables listed below.
           </p>

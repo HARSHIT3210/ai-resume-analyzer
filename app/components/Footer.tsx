@@ -13,7 +13,7 @@ const Footer = () => {
         </div>
 
         {/* Links */}
-        <div className="flex mr-42 gap-4 text-xl">
+        <div className="flex md:mr-42 gap-4 text-xl">
           <a
             href="https://github.com/Harshit3210"
             target="_blank"
@@ -23,7 +23,7 @@ const Footer = () => {
             <FaGithub />
           </a>
           <a
-            href="https://linkedin.com/in/yourusername"
+            href="https://linkedin.com/in/harshit-mehta-97294a32a"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#FFD700] transition"

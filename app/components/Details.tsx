@@ -47,7 +47,7 @@ const CategoryHeader = ({
   categoryScore: number;
 }) => {
   return (
-    <div className="flex flex-row gap-4 items-center py-2">
+    <div className="flex flex-row gap-4 text-gray-200 items-center py-2">
       <p className="text-2xl font-semibold">{title}</p>
       <ScoreBadge score={categoryScore} />
     </div>
