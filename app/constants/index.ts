@@ -190,7 +190,8 @@ export const uploadInstructions = [
   },
 ];
 
-{
+
+    {
   /* <section className="main-section">
         <div className="page-heading py-6">
           <h1 className="font-bold">

@@ -1,9 +1,8 @@
 import type { Route } from "./+types/home";
 import Navbar from "~/components/Navbar";
-import ResumeCard from "~/components/ResumeCard";
 import { usePuterStore } from "~/lib/puter";
 import { Link, useNavigate } from "react-router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Button } from "~/components/ui/button";
 
 export function meta({}: Route.MetaArgs) {
@@ -14,53 +13,42 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  const { auth, kv } = usePuterStore();
+  const { auth } = usePuterStore();
   const navigate = useNavigate();
-  const [resumes, setResumes] = useState<Resume[]>([]);
-  const [loadingResumes, setLoadingResumes] = useState(false);
 
   useEffect(() => {
     if (!auth.isAuthenticated) navigate("/auth?next=/");
   }, [auth.isAuthenticated]);
 
-  useEffect(() => {
-    const loadResumes = async () => {
-      setLoadingResumes(true);
-
-      const resumes = (await kv.list("resume:*", true)) as KVItem[];
-      const parsedResumes = resumes?.map(
-        (resume) => JSON.parse(resume.value) as Resume
-      );
-
-      setResumes(parsedResumes || []);
-      setLoadingResumes(false);
-    };
-
-    loadResumes();
-  }, []);
-
   return (
-    <main>
+    <main className="min-h-screen ">
       <Navbar />
-      <div className="w-full grid grid-rows-1 grid-cols-2">
-        <div className="flex flex-col items-start mt-24 justify-center gap-2 p-14">
-          <div className="ml-4">
-            <h1>Not Sure If Your Resume Stands Out?</h1>
-            <h2 className="mt-2">
-              Get instant, AI-powered insights to polish your resume and land
-              your dream job.
-            </h2>
-          </div>
-          <div className="mt-2 ml-3">
-            <Link to={"/upload"}>
-            <Button className="bg-[#ffd900] rounded-2xl text-gray-800 hover:bg-yellow-400 border-amber-400">
+
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-10 px-8 md:px-20 py-20 items-center">
+        {/* Left - Hero Text */}
+        <div className="space-y-6">
+          <h1 >
+            Not Sure If Your Resume Stands Out?
+          </h1>
+          <h2 >
+            Get instant, AI-powered insights to polish your resume and land your dream job.
+          </h2>
+          <Link to="/upload">
+            <Button className="bg-[#ffd900] hover:bg-yellow-400 text-gray-900 font-semibold px-6 py-3 rounded-2xl shadow-md transition duration-300">
               Upload Resume
             </Button>
-            </Link>
-          </div>
+          </Link>
         </div>
-        <div></div>
-      </div>
+
+        {/* Right - Illustration */}
+        <div className="flex justify-center items-center">
+          <img
+            src="/images/heroImage.png"
+            alt="Resume Analysis Illustration"
+            className="w-[280px] md:w-[350px] mt-10 h-auto object-contain rounded-2xl "
+          />
+        </div>
+      </section>
     </main>
   );
 }
