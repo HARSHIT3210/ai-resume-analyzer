@@ -7,13 +7,21 @@ const Navbar = () => {
   return (
     <nav className="navbar border border-green-600">
       <div>
-        <FlipLink href={"/"} >resulyzer</FlipLink>
+        <FlipLink href={"/"}>resulyzer</FlipLink>
       </div>
       <div className="flex flex-row gap-4">
         <Link to={"/wipe"}>
           <Button
             size={"sm"}
-            className="w-full bg-green-400 border-green-800 border cursor-pointer font-semibold hover:bg-green-500 text-gray-800 text-xs"
+            className="bg-[#ffd900] text-gray-800 text-xs hover:bg-yellow-400 cursor-pointer border-amber-400"
+          >
+            My Resumes
+          </Button>
+        </Link>
+        <Link to={"/wipe"}>
+          <Button
+            size={"sm"}
+            className="bg-[#ffd900] text-gray-800 text-xs hover:bg-yellow-400  cursor-pointer border-amber-400"
           >
             Wipe Data
           </Button>
@@ -21,7 +29,7 @@ const Navbar = () => {
         <Link to={"/upload"}>
           <Button
             size={"sm"}
-            className="w-full bg-green-400 border-green-800 border cursor-pointer font-semibold hover:bg-green-500 text-gray-800 text-xs"
+            className="bg-[#ffd900] text-gray-800 text-xs hover:bg-yellow-400  cursor-pointer border-amber-400"
           >
             Upload Resume
           </Button>

@@ -3,7 +3,7 @@ import Navbar from "~/components/Navbar";
 import ResumeCard from "~/components/ResumeCard";
 import { usePuterStore } from "~/lib/puter";
 import { Link, useNavigate } from "react-router";
-import { useEffect, useState, useRef, useMemo } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "~/components/ui/button";
 
 export function meta({}: Route.MetaArgs) {
@@ -28,7 +28,6 @@ export default function Home() {
       setLoadingResumes(true);
 
       const resumes = (await kv.list("resume:*", true)) as KVItem[];
-
       const parsedResumes = resumes?.map(
         (resume) => JSON.parse(resume.value) as Resume
       );
@@ -41,51 +40,25 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="bg-[url('/images/abstract-envelope.svg')] bg-cover">
+    <main>
       <Navbar />
-
-      <section className="main-section">
-        <div className="page-heading py-6">
-          <h1 className="font-bold">
-            Track Your Applications & Resume Ratings
-          </h1>
-          {!loadingResumes && resumes?.length === 0 ? (
-            <h2 className="font-semibold text-2xl">
-              No resumes found. Upload your first resume to get feedback.
+      <div className="w-full grid grid-rows-1 grid-cols-2">
+        <div className="border border-black flex flex-col items-start mt-24 justify-center gap-2 p-8">
+          <div className="ml-4">
+            <h1>Not Sure If Your Resume Stands Out?</h1>
+            <h2 className="mt-2">
+              Get instant, AI-powered insights to polish your resume and land
+              your dream job.
             </h2>
-          ) : (
-            <h2 className="font-semibold text-2xl">
-              Review your submissions and check AI-powered feedback.
-            </h2>
-          )}
+          </div>
+          <div className="flex justify-center items-center">
+            <Button className="bg-[#eecb08] text-gray-800 ">
+              Upload Resume
+            </Button>
+          </div>
         </div>
-        {loadingResumes && (
-          <div className="flex flex-col items-center justify-center">
-            <img src="/images/resume-scan-2.gif" className="w-[200px]" />
-          </div>
-        )}
-
-        {!loadingResumes && resumes.length > 0 && (
-          <div className="resumes-section">
-            {resumes.map((resume) => (
-              <ResumeCard key={resume.id} resume={resume} />
-            ))}
-          </div>
-        )}
-
-        {!loadingResumes && resumes?.length === 0 && (
-          <div className="flex flex-col items-center justify-center mt-10 gap-4">
-            <Link to="/upload">
-              <Button
-                size={"lg"}
-                className="w-full bg-green-400 border border-green-800 cursor-pointer hover:bg-green-500 font-semibold text-gray-900 text-lg"
-              >
-                Upload Resume
-              </Button>
-            </Link>
-          </div>
-        )}
-      </section>
+        <div className="border border-black"></div>
+      </div>
     </main>
   );
 }

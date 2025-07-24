@@ -41,7 +41,7 @@ const WipeApp = () => {
   }
 
   return (
-    <main className="bg-[url('/images/abstract-envelope.svg')] bg-cover ">
+    <main>
       <Navbar />
       <div className="flex flex-col items-center justify-start min-h-screen p-4">
         Authenticated as: {auth.user?.username}

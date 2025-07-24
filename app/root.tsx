@@ -38,7 +38,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="bg-[url('/images/confetti-doodles.svg')] bg-cover">
         <script src="https://js.puter.com/v2/"></script>
 
         {children}
