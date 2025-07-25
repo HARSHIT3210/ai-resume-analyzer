@@ -7,32 +7,38 @@ interface FileUploaderProps {
 }
 
 const FileUpload = ({ onFileSelect }: FileUploaderProps) => {
-  const onDrop = useCallback(
-    (acceptedFiles: File[]) => {
-      const file = acceptedFiles[0] || null;
+  const [file, setFile] = useState<File | null>(null);
 
-      onFileSelect?.(file);
+  const onDrop = useCallback(
+    async (acceptedFiles: File[]) => {
+      const droppedFile = acceptedFiles[0] || null;
+      if (!droppedFile) return;
+
+      setFile(droppedFile);
+      onFileSelect?.(droppedFile);
     },
     [onFileSelect]
   );
 
-  const maxFileSize = 20 * 1024 * 1024; // 20MB in bytes
+  const maxFileSize = 20 * 1024 * 1024; // 20MB
 
-  const { getRootProps, getInputProps, acceptedFiles } =
-    useDropzone({
-      onDrop,
-      multiple: false,
-      accept: { "application/pdf": [".pdf"] },
-      maxSize: maxFileSize,
-    });
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    multiple: false,
+    accept: { "application/pdf": [".pdf"] },
+    maxSize: maxFileSize,
+  });
 
-  const file = acceptedFiles[0] || null;
+  const handleRemove = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setFile(null);
+    onFileSelect?.(null);
+  };
 
   return (
     <div className="w-full gradient-border bg-gray-200">
       <div {...getRootProps()}>
         <input {...getInputProps()} />
-
         <div className="space-y-4 cursor-pointer">
           {file ? (
             <div
@@ -50,12 +56,7 @@ const FileUpload = ({ onFileSelect }: FileUploaderProps) => {
                   </p>
                 </div>
               </div>
-              <button
-                className="p-2 cursor-pointer"
-                onClick={(e) => {
-                  onFileSelect?.(null);
-                }}
-              >
+              <button className="p-2 cursor-pointer" onClick={handleRemove}>
                 <img src="/icons/cross.svg" alt="remove" className="w-4 h-4" />
               </button>
             </div>
@@ -78,4 +79,5 @@ const FileUpload = ({ onFileSelect }: FileUploaderProps) => {
     </div>
   );
 };
+
 export default FileUpload;

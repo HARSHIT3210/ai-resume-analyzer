@@ -131,10 +131,10 @@ const Upload = () => {
         </header>
 
         {/* RIGHT SIDE – Upload Form */}
-        <section className="p-12 flex flex-col justify-center h-full overflow-y-auto">
+        <section className="p-12 flex flex-col justify-center items-center h-full overflow-y-auto">
           {isProcessing ? (
             <>
-              <p>{statusText}</p>
+              <p className="text-center text-2xl font-semibold text-gray-200">{statusText}</p>
               <img
                 src="/images/resume-scan.gif"
                 className="w-full max-w-md mt-4 rounded-lg"

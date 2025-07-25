@@ -190,4 +190,54 @@ export const uploadInstructions = [
   },
 ];
 
+export const keywords = [
+  "education",
+  "experience",
+  "skills",
+  "projects",
+  "certifications",
+  "summary",
+  "contact",
+  "linkedin",
+  "objective",
+  "technologies",
+  "profile",
+];
 
+// function isLikelyResume(text: string): boolean {
+//   const lower = text.toLowerCase();
+//   // Count how many keywords appear
+//   const matchCount = keywords.filter((word) => lower.includes(word)).length;
+//   return matchCount >= 3; // Tune this threshold as needed
+// }
+
+// const text = await extractTextFromPdf(file);
+// const isResume = isLikelyResume(text);
+
+// if (!isResume) {
+//   alert("The uploaded PDF doesn't seem like a valid resume.");
+//   onFileSelect?.(null);
+//   return;
+// }
+
+// export async function extractTextFromPdf(file: File): Promise<string> {
+//   try {
+//     const lib = await loadPdfJs();
+//     const arrayBuffer = await file.arrayBuffer();
+//     const pdf = await lib.getDocument({ data: arrayBuffer }).promise;
+
+//     let fullText = "";
+
+//     for (let i = 1; i <= pdf.numPages; i++) {
+//       const page = await pdf.getPage(i);
+//       const content = await page.getTextContent();
+//       const pageText = content.items.map((item: any) => item.str).join(" ");
+//       fullText += pageText + "\n";
+//     }
+//     console.log("Extracted text:", fullText);
+//     return fullText;
+//   } catch (err) {
+//     console.error("Error extracting text from PDF:", err);
+//     return "";
+//   }
+// }
