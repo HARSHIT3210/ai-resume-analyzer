@@ -14,10 +14,10 @@ const ATS: React.FC<ATSProps> = ({ score, suggestions }) => {
   // Determine background gradient based on score
   const gradientClass =
     score > 69
-      ? "from-green-100"
+      ? "from-green-300"
       : score > 49
-      ? "from-yellow-100"
-      : "from-red-100";
+      ? "from-yellow-300"
+      : "from-red-300";
 
   // Determine icon based on score
   const iconSrc =

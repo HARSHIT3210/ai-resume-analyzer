@@ -40,7 +40,7 @@ const ResumeCard = ({
               src={resumeUrl}
               alt="Resume Preview"
               onLoad={() => setLoadingImage(false)}
-              className={`w-full h-full object-cover object-top transition duration-300 group-hover:scale-105 ${
+              className={`w-full h-full object-cover object-top rounded-xl p-2 transition duration-300 group-hover:scale-105 ${
                 loadingImage ? "opacity-0" : "opacity-100"
               }`}
             />

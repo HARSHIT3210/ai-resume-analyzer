@@ -4,10 +4,10 @@ import ScoreGauge from "./ScoreGauge";
 const Category = ({ title, score }: { title: string; score: number }) => {
   const textColor =
     score > 70
-      ? "text-green-600"
+      ? "text-green-800"
       : score > 49
-      ? "text-yellow-600"
-      : "text-red-600";
+      ? "text-yellow-800"
+      : "text-red-800";
 
   return (
     <div className="resume-summary">
