@@ -12,6 +12,11 @@ import {
 import { convertPdfToImage } from "~/lib/pdfToImage";
 import { Button } from "~/components/ui/button";
 
+export const meta = () => [
+  { title: "Resulyzer | Upload" },
+  { name: "description", content: "Upload your resume" },
+];
+
 const Upload = () => {
   const { auth, isLoading, fs, ai, kv } = usePuterStore();
   const navigate = useNavigate();

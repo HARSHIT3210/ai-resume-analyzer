@@ -5,6 +5,11 @@ import ResumeCard from "~/components/ResumeCard";
 import { Button } from "~/components/ui/button";
 import { usePuterStore } from "~/lib/puter";
 
+export const meta = () => [
+  { title: "Resulyzer | My Resumes" },
+  { name: "description", content: "Keep track of your applications" },
+];
+
 const MyResumes = () => {
   const { kv } = usePuterStore();
   const [resumes, setResumes] = useState<Resume[]>([]);
