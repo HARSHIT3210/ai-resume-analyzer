@@ -3,9 +3,11 @@ import { Link } from "react-router";
 import { Button } from "./ui/button";
 import FlipLink from "./ui/text-effect-flipper";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { usePuterStore } from "~/lib/puter";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { auth } = usePuterStore();
 
   return (
     <nav className="navbar relative">
@@ -62,6 +64,7 @@ const Navbar = () => {
           </Link>
         </div>
       </div>
+      <Button className="bg-[#ffd900] text-gray-800 rounded-full text-xs hover:bg-yellow-400 border-amber-400 w-full md:w-auto" onClick={auth.signOut}>Sign out</Button>
     </nav>
   );
 };
