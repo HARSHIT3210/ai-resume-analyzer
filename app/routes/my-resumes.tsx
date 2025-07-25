@@ -37,13 +37,13 @@ const MyResumes = () => {
       <section className="max-w-6xl mx-auto px-6 py-12">
         {/* Heading */}
         <div className="mb-10 text-center">
-          <h1>Track Your Applications & Resume Ratings</h1>
+          <h1>Monitor Your Applications & Optimize Your Resume</h1>
           <h2 className="mt-4">
             {loadingResumes
               ? "Loading your resumes..."
               : resumes.length === 0
               ? "No resumes found. Upload your first resume to get AI feedback."
-              : "Review your submissions and check AI-powered feedback."}
+              : "Get insights with AI-powered feedback on every submission."}
           </h2>
         </div>
 
