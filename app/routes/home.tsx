@@ -30,7 +30,7 @@ export default function Home() {
 
       <section className="grid grid-cols-1 md:grid-cols-2 gap-10 px-6 md:px-20 py-16 items-center">
         {/* Left - Hero Text */}
-        <div className="space-y-4">
+        <div className="space-y-4 px-10">
           <h1>Not Sure If Your Resume Stands Out?</h1>
           <h2>
             Get instant, AI-powered insights to polish your resume and land your

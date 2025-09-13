@@ -109,8 +109,8 @@ const Upload = () => {
   return (
     <main>
       <Navbar />
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 min-h-[calc(100vh-80px)]">
-        <header className="flex flex-col gap-3 p-12 text-white overflow-y-auto">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 min-h-[calc(100vh-80px)] p-10">
+        <header className="flex mt-6 ml-10 flex-col gap-3 text-white overflow-y-auto">
           <h1 className="text-4xl font-bold">
             Smart Feedback for Your Dream Job
           </h1>
@@ -131,7 +131,7 @@ const Upload = () => {
         </header>
 
         {/* RIGHT SIDE – Upload Form */}
-        <section className="p-12 flex flex-col justify-center items-center h-full overflow-y-auto">
+        <section className="flex mt-3 mr-10  flex-col justify-center items-center h-full overflow-y-auto">
           {isProcessing ? (
             <>
               <p className="text-center text-2xl font-semibold text-gray-200">{statusText}</p>
